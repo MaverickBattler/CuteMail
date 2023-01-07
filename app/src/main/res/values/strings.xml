@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CuteMail</string>
+    <string name="outbox_fragment">OutboxFragment</string>
+    <string name="inbox_fragment">InboxFragment</string>
+    <string name="help_fragment">HelpFragment</string>
+    <string name="inbox">Входящие</string>
+    <string name="outbox">Исходящие</string>
+    <string name="help">Помощь</string>
+</resources>
