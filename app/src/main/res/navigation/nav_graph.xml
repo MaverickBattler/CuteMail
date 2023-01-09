@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/outbox_fragment"
         android:name="com.petproject.cutemail.OutboxFragment"
-        android:label="Отправленные"
+        android:label="Исходящие"
         tools:layout="@layout/fragment_outbox"/>
 
 </navigation>
