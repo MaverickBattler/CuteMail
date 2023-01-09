@@ -6,4 +6,6 @@
     <string name="inbox">Входящие</string>
     <string name="outbox">Исходящие</string>
     <string name="help">Помощь</string>
+    <string name="support">Поддержка</string>
+    <string name="image_description_nav_header">Image for the navigation drawer header</string>
 </resources>

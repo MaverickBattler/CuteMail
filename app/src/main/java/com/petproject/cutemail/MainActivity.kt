@@ -4,13 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,17 +24,22 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        //Setting up the toolbar
+        // Link the drawer to the navigation controller
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        NavigationUI.setupWithNavController(navView, navController)
+
+        // Setting up the toolbar
         val toolbar = findViewById<MaterialToolbar>(R.id.material_toolbar)
         setSupportActionBar(toolbar)
 
-        //Setting the title in toolbar when navigating
-        val appBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
+        // Setting up app bar configuration with navigation drawer
+        val navDrawer = findViewById<DrawerLayout>(R.id.drawer_layout)
+        // Up button is shown only when the active fragment is not inbox or outbox
+        val builder = AppBarConfiguration.Builder(setOf(R.id.inbox_fragment, R.id.outbox_fragment))
+        builder.setOpenableLayout(navDrawer)
+        val appBarConfiguration = builder.build()
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
-        //Setting up bottom navigation
-        val bottomNavView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
-        bottomNavView.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
